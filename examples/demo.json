@@ -1,0 +1,15 @@
+{
+  "connections": [
+    {
+      "chunks": [
+        "id: a\r\ndata: bon",
+        "jour\r\ndata: monde\r\n\r\n"
+      ]
+    },
+    {
+      "chunks": [
+        "id: b\ndata: unfinished"
+      ]
+    }
+  ]
+}

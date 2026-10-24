@@ -1,0 +1,1 @@
+DESCRIPTION = {'fr': 'Rejouer les fragments SSE et les curseurs de reconnexion sans inventer des événements', 'en': 'Replay SSE chunks and reconnect cursors without inventing events', 'es': 'Reproducir fragmentos SSE y cursores de reconexión sin inventar eventos'}
