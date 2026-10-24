@@ -18,7 +18,8 @@ def run(data):
   if text.startswith('\ufeff'):text=text[1:]
   start=cursor;id_buffer=cursor;payload=[];kind='';count=0
   # Last unterminated line and incomplete event are discarded at EOF.
-  for line in re.split(r'\r\n|\r|\n',text)[:-1]:
+  lines=re.split(r'\r\n|\r|\n',text);trailing=lines.pop()
+  for line in lines:
    if not line:
     cursor=id_buffer
     if not payload:continue
@@ -35,5 +36,5 @@ def run(data):
    elif name=='event':kind=value
    elif name=='id'and'\x00'not in value:id_buffer=value
    elif name=='retry'and value and value.isascii()and value.isdecimal()and len(value)<=12:retry=int(value)
-  receipts.append({'connection':ci,'request_last_event_id':start or None,'resume_last_event_id':cursor or None,'dispatched':count,'incomplete_event_discarded':bool(payload),'retry_ms':retry})
+  receipts.append({'connection':ci,'request_last_event_id':start or None,'resume_last_event_id':cursor or None,'dispatched':count,'incomplete_event_discarded':bool(payload)or trailing=='data'or trailing.startswith('data:'),'unterminated_line_discarded':bool(trailing),'retry_ms':retry})
  return {'events':events,'connections':receipts,'reused_id_payload_changes':conflicts,'final_cursor':cursor,'model':'whatwg_sse_framing_and_reconnect_cursor_not_terminal_response_validation'}

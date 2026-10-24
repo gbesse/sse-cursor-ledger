@@ -12,3 +12,8 @@ class Tests(unittest.TestCase):
  def test_nul_id_retry_comments_and_lone_cr(self):
   r=run({'connections':[{'chunks':[':comment\rretry: 30\rid: good\rdata: x\r\rid: bad\x00id\rdata: y\r\r']}]});self.assertEqual([e['id']for e in r['events']],['good','good']);self.assertEqual(r['connections'][0]['retry_ms'],30);self.assertEqual(len(r['reused_id_payload_changes']),1)
  def test_eof_does_not_dispatch(self):self.assertEqual(run({'connections':[{'chunks':['data: x\n']}]})['events'],[])
+
+class EofDiagnostics(unittest.TestCase):
+ def test_unterminated_data_line_is_reported_as_discarded_without_cursor_advance(self):
+  r=run({'connections':[{'chunks':['id: a\ndata: x\n\n']},{'chunks':['id: b\ndata: unfinished']}]})
+  self.assertEqual(r['final_cursor'],'a');self.assertEqual(len(r['events']),1);self.assertTrue(r['connections'][1]['incomplete_event_discarded']);self.assertTrue(r['connections'][1]['unterminated_line_discarded'])

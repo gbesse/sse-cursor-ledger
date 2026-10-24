@@ -72,3 +72,9 @@ Pruebas de dominio, casos límite e interfaz FR/EN/ES. CI prueba Python 3.11/3.1
 ## Sources / Fuentes
 
 - https://html.spec.whatwg.org/multipage/server-sent-events.html
+
+FR — alpha.2 signale aussi une ligne data finale non terminée comme jetée à EOF, sans émission ni progression du curseur. Les délais retry lus sont bornés à12 chiffres dans ce diagnostic.
+
+EN — alpha.2 also reports a final unterminated data line discarded at EOF, without dispatch or cursor advancement. Parsed retry values are bounded to12 digits in this diagnostic.
+
+ES — alpha.2 también indica una línea data final sin terminar descartada en EOF, sin emisión o avance de cursor. Valores retry analizados se limitan a12 dígitos en este diagnóstico.

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sse-cursor-ledger"
-version = "0.1.0a1"
+version = "0.1.0a2"
 description = "FR: Rejouer les fragments SSE et les curseurs de reconnexion sans inventer des événements | EN: Replay SSE chunks and reconnect cursors without inventing events | ES: Reproducir fragmentos SSE y cursores de reconexión sin inventar eventos"
 requires-python = ">=3.11"
 license = "MIT"
