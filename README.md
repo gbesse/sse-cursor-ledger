@@ -78,3 +78,12 @@ FR — alpha.2 signale aussi une ligne data finale non terminée comme jetée à
 EN — alpha.2 also reports a final unterminated data line discarded at EOF, without dispatch or cursor advancement. Parsed retry values are bounded to12 digits in this diagnostic.
 
 ES — alpha.2 también indica una línea data final sin terminar descartada en EOF, sin emisión o avance de cursor. Valores retry analizados se limitan a12 dígitos en este diagnóstico.
+
+
+## 2026-11-05 — FR / EN / ES
+
+FR : Le rapport distingue désormais livraison répétée de même id/même contenu et même id/contenu différent. Tous les événements sont conservés : id SSE opaque ne garantit pas unicité métier ; le type n’est pas comparé dans ce diagnostic de contenu.
+
+EN: Report now distinguishes repeated same-id/same-payload delivery from same-id/changed-payload replay. Every event is retained: opaque SSE IDs do not guarantee business uniqueness; event type is not compared in this payload diagnostic.
+
+ES: El informe distingue entrega repetida con mismo id/contenido y mismo id/contenido cambiado. Conserva eventos: id SSE opaco no garantiza unicidad de negocio; este diagnóstico no compara tipo de evento.
